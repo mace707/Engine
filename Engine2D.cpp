@@ -8,7 +8,7 @@
 #include "Player.h"
 #include "AiBot.h"
 #include "Score.h"
-
+#include "Lodepng.h"
 enum MENU_ITEM
 {
 	ITEM_START		= 11,
@@ -48,6 +48,7 @@ void Mouse			( int button, int state, int x, int y );
 void FindPlayer		( );
 void menu			( int item);
 void DrawGrid		( );
+void LoadImage(string img);
 
 Grid MainGrid;
 Player HumanPlayer;
@@ -78,6 +79,7 @@ int PlayerLives = 3;
 int main ( int argc, char** argv )
 {
 	glutInit				( &argc, argv );
+	LoadImage("textures\\wall.png");
 //	PlaySound				( TEXT ( "E:\\VSProjects\\OpenGL\\Maze\\Maze2D\\Debug\\Game\\game.wav" ), NULL, SND_ASYNC | SND_LOOP | SND_FILENAME );
 	glutInitDisplayMode		( GLUT_DOUBLE | GLUT_RGB );
 	glutInitWindowSize		( 600, 400 );
@@ -267,7 +269,7 @@ void DrawGrid ( )
 	glPopMatrix ( );
 }
 
-void IdleFunc ( )
+void IdleFunc()
 {
 	Display ( );
 	glutPostRedisplay ( );
@@ -299,16 +301,16 @@ void Mouse ( int button, int state, int x, int y )
 
 			Coords.x = posX;
 			Coords.y = posY;
-
-			if ( Coords.x < 0 )
-				Coords.x -= 1;
-			else
-				Coords.x += 1;
-
-			if ( Coords.y < 0 )
-				Coords.y -= 1;
-			else
-				Coords.y += 1;
+// 
+// 			if ( Coords.x < 0 )
+// 				Coords.x -= 1;
+// 			else
+// 				Coords.x += 1;
+// 
+// 			if ( Coords.y < 0 )
+// 				Coords.y -= 1;
+// 			else
+// 				Coords.y += 1;
 
 			switch ( BB )
 			{
@@ -422,5 +424,14 @@ void FindPlayer ( )
 		if ( PlayerLives == 0 );
 			glDisable ( GL_LIGHTING );
 	}
+}
+
+void LoadImage(string img)
+{
+	std::vector<unsigned char> image;
+	unsigned width, height;
+	unsigned error = lodepng::decode(image, width, height, img);
+	const char* errTxt = lodepng_error_text(error);
+	int x = 2;
 }
 

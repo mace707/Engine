@@ -82,6 +82,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AiBot.h" />
+    <ClInclude Include="Lodepng.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Grid.h" />
     <ClInclude Include="Score.h" />
@@ -94,6 +95,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AiBot.cpp" />
+    <ClCompile Include="Lodepng.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Engine2D.cpp" />
     <ClCompile Include="Grid.cpp" />
