@@ -143,30 +143,6 @@ void Init ( void )
 	glMatrixMode ( GL_PROJECTION );
 	glLoadIdentity ( );
 	glOrtho ( -60, 60, -60, 60, -1.0, 1.0 );
-
-	glLightModelf ( GL_LIGHT_MODEL_LOCAL_VIEWER, GL_TRUE );
-	glEnable ( GL_LIGHTING );
-	glEnable ( GL_LIGHT0 );
-
-	glEnable ( GL_LIGHT1 );
-	GLfloat qaAmbientLight[] = { 0.2, 0.2, 0.2, 1.0 };
-	GLfloat qaDiffuseLight[] = { 0.8, 0.8, 0.8, 1.0 };
-	GLfloat qaSpecularLight[] = { 1.0, 1.0, 1.0, 1.0 };
-	glLightfv ( GL_LIGHT0, GL_AMBIENT, qaAmbientLight );
-	glLightfv ( GL_LIGHT0, GL_DIFFUSE, qaDiffuseLight );
-	glLightfv ( GL_LIGHT0, GL_SPECULAR, qaSpecularLight );
-
-	GLfloat qaAmbientLight2[] = { 0.8, 0.2, 0.2, 1.0 };
-	GLfloat qaDiffuseLight2[] = { 0.8, 0.0, 0.8, 1.0 };
-	GLfloat qaSpecularLight2[] = { 1.0, 0.0, 1.0, 1.0 };
-	glLightfv ( GL_LIGHT1, GL_AMBIENT, qaAmbientLight2 );
-	glLightfv ( GL_LIGHT1, GL_DIFFUSE, qaDiffuseLight2 );
-	glLightfv ( GL_LIGHT1, GL_SPECULAR, qaSpecularLight2 );
-
-	GLfloat qaLightPosition[] = { 10, 20, 1.0, 1.0 };
-	GLfloat qaLightPosition2[] = { 30, 20, 1.0, 1.0 };
-	glLightfv ( GL_LIGHT0, GL_POSITION, qaLightPosition );
-	glLightfv ( GL_LIGHT1, GL_POSITION, qaLightPosition2 );
 }
 
 void Display ( void )
@@ -205,7 +181,6 @@ void Reshape ( int w, int h )
 	glViewport		( 0, 0, w, h );
 	glLoadIdentity	( );
 	glOrtho ( -30.0, 30, -30, 30, -1.0, 1.0 );
-//	gluPerspective ( 60, double ( w ) / double ( h ), 1, 256 );
 }
 
 void KeyBoardFunc ( int key, int h, int w )
@@ -301,17 +276,6 @@ void Mouse ( int button, int state, int x, int y )
 
 			Coords.x = posX;
 			Coords.y = posY;
-// 
-// 			if ( Coords.x < 0 )
-// 				Coords.x -= 1;
-// 			else
-// 				Coords.x += 1;
-// 
-// 			if ( Coords.y < 0 )
-// 				Coords.y -= 1;
-// 			else
-// 				Coords.y += 1;
-
 			switch ( BB )
 			{
 				case BB_Token:	MainGrid.PopulateTokenList ( Coords );		break;

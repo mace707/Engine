@@ -13,8 +13,7 @@ void Squar::Draw ( int x1, int y1, int x2, int y2, Color col, bool token )
 {
 	glPushMatrix ( );
 	glBegin ( GL_QUADS );
-	glEnable ( GL_LIGHTING );
-	glNormal3f ( 0.0, 0.0, 1.0 );
+	glColor3f(col.R, col.G, col.B);
 	if ( token )
 	{
 		double x1f = x1 + 0.25;

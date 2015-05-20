@@ -14,30 +14,33 @@ Grid::~Grid ( )
 
 void Grid::Draw ( )
 {
-	XYCoordinates coords;
-	int listPos = 0;
 	glPushMatrix ( );
 	glBegin ( GL_QUADS );
 
 	Squar square;
 	Squar::Color col;
 
-	listPos += 1;
 	for ( int i = 0; i < InvalidList.size ( ); i++ )
 	{
 		col.R = 1;
-		col.G = 1;
+		col.G = 0;
 		col.B = 1;
-		GLfloat qaBlack[] = { 0.0, 0.0, 0.0, 1.0 };
-		GLfloat qaGreen[] = { 0.0, 1.0, 0.0, 1.0 };
-		GLfloat qaWhite[] = { 1.0, 1.0, 1.0, 1.0 };
+		square.Draw(InvalidList[i].x, InvalidList[i].y, InvalidList[i].x + 1, InvalidList[i].y + 1, col);
+	}
 
-		glMaterialfv ( GL_FRONT, GL_AMBIENT, qaWhite );
-		glMaterialfv ( GL_FRONT, GL_DIFFUSE, qaGreen );
-		glMaterialfv ( GL_FRONT, GL_SPECULAR, qaWhite );
-		glMaterialf ( GL_FRONT, GL_SHININESS, 60.0 );
-		glNormal3f ( 0.0, 0.0, 1.0 );
-		square.Draw ( InvalidList[i].x, InvalidList[i].y, InvalidList[i].x + 1, InvalidList[i].y + 1, col );
+	for (int i = 0; i < BombList.size(); i++)
+	{
+
+	}
+
+	for (int i = 0; i < WallList.size(); i++)
+	{
+
+	}
+
+	for (int i = 0; i < GunList.size(); i++)
+	{
+
 	}
 
 	for ( int i = 0; i < TokenList.size(); i++ )
@@ -45,14 +48,6 @@ void Grid::Draw ( )
 		col.R = 1;
 		col.G = 1;
 		col.B = 0;
-		GLfloat qaBlack[] = { 0.0, 0.0, 0.0, 1.0 };
-		GLfloat qaWhite[] = { 1.0, 1.0, 1.0, 1.0 };
-		GLfloat qaGold[] = { 1.0, 1.0, 0.0, 1.0 };
-		glMaterialfv ( GL_FRONT, GL_AMBIENT, qaGold );
-		glMaterialfv ( GL_FRONT, GL_DIFFUSE, qaGold );
-		glMaterialfv ( GL_FRONT, GL_SPECULAR, qaWhite );
-		glMaterialf ( GL_FRONT, GL_SHININESS, 200.0 );
-		glNormal3f ( 0.0, 0.0, 1.0 );
 		square.Draw ( TokenList[i].x, TokenList[i].y, TokenList[i].x + 1, TokenList[i].y + 1, col, true );
 	}
 
@@ -131,7 +126,27 @@ bool Grid::EatToken ( int x, int y )
 	return tokenEaten;
 }
 
-bool Grid::IsNotInvalidPosition ( int x, int y )
+void Grid::PopulateBombList(XYCoordinates coords)
+{
+
+}
+
+bool Grid::ExplodeBomb(int x, int y)
+{
+	return false;
+}
+
+void Grid::SaveBombList()
+{
+
+}
+
+void Grid::LoadBombList()
+{
+
+}
+
+bool Grid::IsNotInvalidPosition(int x, int y)
 { 
 	for ( int i = 0; i < InvalidList.size ( ); i++ )
 	{

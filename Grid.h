@@ -7,43 +7,51 @@ using namespace std;
 
 class Grid
 {
-	public:
-		struct XYCoordinates
-		{
-			int x, y;
-		};
+public:
+	struct XYCoordinates
+	{
+		int x, y;
+	};
 
-		Grid ( );
-		~Grid ( );
+	Grid();
+	~Grid();
 
-		void Draw ( );
-		
-		vector<XYCoordinates> GetValidList ( );
+	void Draw();
 
-		void PopulateInvalidList	( XYCoordinates coords );
-		bool IsNotInvalidPosition	( int x, int y );
-	
-		void PopulateTokenList		( XYCoordinates coords );
-		bool EatToken ( int x, int y );
-		void DeleteBorder ( int x, int y );
+	vector<XYCoordinates> GetValidList();
 
-		int TokenListSize ( ); 
+	void PopulateInvalidList(XYCoordinates coords);
+	bool IsNotInvalidPosition(int x, int y);
+	void DeleteBorder(int x, int y);
+	void SaveInvalidList();
+	void LoadInvalidList();
 
-		void ClearList ( vector<XYCoordinates> &list );
-		void SaveInvalidList ( );
-		void SaveTokenList ( );
-		void GetSaveLists ( const vector<XYCoordinates> &list, vector<int> &xList, vector<int> &yList );
-		void SaveMap ( );
-		
-		void LoadMap ( );
-		void LoadInvalidList ( );
-		void LoadTokenList ( );
-		void SetLoadLists ( vector<XYCoordinates> &list, const vector<int> &xList, const vector<int> &yList );
-	private:
-		vector<XYCoordinates> InvalidList;
-		vector<XYCoordinates> TokenList;
+	void PopulateTokenList(XYCoordinates coords);
+	bool EatToken(int x, int y);
+	int TokenListSize();
+	void SaveTokenList();
+	void LoadTokenList();
+
+	void PopulateBombList(XYCoordinates coords);
+	bool ExplodeBomb(int x, int y);
+	void SaveBombList();
+	void LoadBombList();
+
+	void ClearList(vector<XYCoordinates> &list);
+	void SetLoadLists(vector<XYCoordinates> &list, const vector<int> &xList, const vector<int> &yList);
+	void GetSaveLists(const vector<XYCoordinates> &list, vector<int> &xList, vector<int> &yList);
+	void SaveMap();
+	void LoadMap();
 
 
-		
+
+
+
+private:
+	vector<XYCoordinates> InvalidList;
+	vector<XYCoordinates> TokenList;
+	vector<XYCoordinates> BombList;
+	vector<XYCoordinates> WallList;
+	vector<XYCoordinates> GunList;
 };
 

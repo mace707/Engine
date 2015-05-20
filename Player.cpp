@@ -21,17 +21,7 @@ void Player::Draw ( )
 { 
 	glPushMatrix ( );
 	glBegin ( GL_QUADS );
-
-	GLfloat qaBlack[] = { 0.0, 0.0, 0.0, 1.0 };
-	GLfloat qaBlue[] = { 0.0, 0.0, 1.0, 1.0 };
-	GLfloat qaWhite[] = { 1.0, 1.0, 1.0, 1.0 };
-
-	glMaterialfv ( GL_FRONT, GL_AMBIENT, qaBlue );
-	glMaterialfv ( GL_FRONT, GL_DIFFUSE, qaBlue );
-	glMaterialfv ( GL_FRONT, GL_SPECULAR, qaWhite );
-	glMaterialf ( GL_FRONT, GL_SHININESS, 100.0 );
-	glNormal3f ( 0.0, 0.0, 1.0 );
-
+	glColor3f(0, 1, 0);
 	glVertex2f ( X, Y );
 	glVertex2f ( X, Y + 1 );
 	glVertex2f ( X + 1, Y + 1 );
